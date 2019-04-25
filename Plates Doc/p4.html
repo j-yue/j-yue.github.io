@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<!--
+	Imagination by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>p4</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+	</head>
+	<body>
+
+	<div id="header-wrapper">
+
+		<!-- Header -->
+			<div id="header">
+				<div class="container">
+						
+					<!-- Logo -->
+						<div id="logo">
+							<h1><a href="#">P4</a></h1>
+							<span class="byline">Jennifer Cho | Soo Bin Yang | Jeanette Yue</span>
+						</div>
+					
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">P0</a></li>
+						        <li><a href="p1.html">P1</a></li>
+						        <li><a href="p2.html">P2</a></li>
+						        <li><a href="p3.html">P3</a></li>
+						        <li class="active"><a href="p4.html">P4</a></li>
+						        <li><a href="p5.html">P5</a></li>  
+
+							</ul>
+						</nav>
+				</div>
+			</div>
+		<!-- Header -->
+
+		<!-- Banner -->
+			<div id="banner">
+				<div class="container">
+				</div>
+			</div>
+		<!-- /Banner -->
+
+	</div>
+
+	<!-- Main -->
+		<div id="main">
+			<div class="container">
+				<div class="row">
+		
+					<div class="9u skel-cell-important">
+						<section>
+							<header>
+								<h1>P4: Computer Prototype</h1>
+							</header>
+
+
+							<div id="PrototypeScreens">
+								<h1>Prototype Screenshots</h1>
+
+								<p>Click to Enlarge:</p>
+								<h2>Tracking Data</h2>
+								<div id="container">
+									<img src="ss/IMG_0821.PNG">
+									<img src="ss/IMG_0822.PNG">
+									<img src="ss/IMG_0823.PNG">
+									<img src="ss/IMG_0824.PNG">
+									<img src="ss/IMG_0825.PNG">
+									<img src="ss/IMG_0826.PNG">
+									<img src="ss/IMG_0827.PNG">
+									<img src="ss/IMG_0828.PNG">
+									<img src="ss/IMG_0829.PNG">
+									<img src="ss/IMG_0830.PNG">
+									<img src="ss/IMG_0831.PNG">
+									<img src="ss/IMG_0832.PNG">
+									<img src="ss/IMG_0833.PNG">
+									<img src="ss/IMG_0834.PNG">
+									<img src="ss/IMG_0835.PNG">
+									<img src="ss/IMG_0836.PNG">
+									<img src="ss/IMG_0837.PNG">
+									<img src="ss/IMG_0838.PNG">
+
+								</div>
+								
+
+							</div>
+
+							<div id="Documentation">
+								<h1>Documentation</h1>
+
+								<h2>Look and Feel</h2>
+								<p>We used jQuery Mobile to maintain a consistent look throughout the application. Since our app is information heavy and aims to educate the user about healthy eating facts, jQuery offers features such as lists and collapsibles to make organizing information easy.</p>
+								<p>Layout: For the layout of the app, we maintained the design of our original paper prototype. We changed the shape and size of a few buttons, for example the plus and minus buttons and the pending challenge buttons, due to coding constraints. More details of the layout can be found in the documentation below.</p>
+								<p>Colors: We chose a dark blue, yellow, and off-white color scheme for our app. Yellow is associated with happiness and stimulates appetite, and so we used it as the main header and footer colors. We decided to make the background color the dark blue to make the content of the make easy on the viewer’s eyes. The buttons are the same yellow color as the header, which makes these interactive features contrast and pop out from the dark background.</p>
+
+								<h2>Complete Features</h2>
+								<p>We decided to focus on the home screen and to fully implement the interactive plate and cup, which allows users to record their meals and to view their daily nutritional intake easily through the simple and summative visual of a portioned plate and to learn more about nutrition via “More Info.” </p>
+								<p>Help: Again, we decided to replace the help tooltip with a help page. Having organized, structured content would be visually more appealing and less overwhelming.</p>
+								<p>Home Page: The layout of the page is almost identical to its paper counterpart with few minor differences: instead of having the image, incremental buttons, and more info button on the same row, we decided to group them in different ways for primarily two reasons: 1) the limited width of the iphone and 2) similarity. The width was smaller than we anticipated and placing them on the same row would diminish user visibility. And intuitively, it would make more sense for the objects to be separated by functions; the picture serves as a visual indication of the selected portion of the plate, the + and - buttons are used to record and update meals, and the more info button directs users to a different page. We also altered minor behavioral details. Instead of displaying a tooltip when users tap the help button, they are instead directed to a new page with collapsibles detailing the features of the home screen. Listing information about each section in a tooltip would have been too messy and overwhelming. Additionally, there are no longer any popup messages to give feedback after recording. With a working interactive plate, users will immediately receive visual feedback as selected portions of the plate become more colored.</p>
+								<p>We also added some measure of error prevention: Users cannot record more than the daily recommended amount nor can they subtract from a food group with 0 recorded servings. When they attempt to do so, they will receive an alert.</p>
+								<p>More Info: The layout and behavior of the page are identical to what we envisioned. There is a title with the selected food group’s name, help and back buttons, a progress bar indicating daily intake, recommended foods, general information about nutrition and healthy benefits, and conversions. The most interesting part of this page is the progress bar, which allows users to focus solely on one food group and their progress in relation to what is recommended. It is also important to note the lack of numbers on the plate and the progress bar. Any numerical value aside from the increment buttons is implied through color and area. This is to encourage users to explore the app and have a refreshing experience to encourage healthier eating; we do not want users experiencing the tedium and stress of crunching numbers. </p>
+								 <p>My Profile: We deleted achievements because it felt redundant, especially with personal goals.</p>
+								<p>My Stats: We changed the format of personal stats so that now you can only track your progress via a line graph. Additionally, for the navigation of each type and category of line graph, we put the tags horizontally on the top instead of vertically on the side since it was more aesthetically pleasing to put it on top and it gave the graph more horizontal space to display.</p>
+								<p>Personal Goals: We changed the navigation format by getting rid of the bar that made the “create” option a permanent and the default page, and instead changed it so that you would be leaded into a list of goals. From there you can toggle the adding a goal option by pressing on the + button in the same way you can toggle the delete a goal by pressing on the - button.</p>
+								<p>Challenges: We changed the shape of the buttons to make them rectangular and aligned them vertically so the page reads up to down. This was to maintain consistency with the other pages of the app.</p>
+
+							</div>
+
+						</section>
+					</div>
+					
+					<div class="3u">
+						<section class="sidebar">
+							<header>
+								<h2>Contents</h2>
+							</header>
+							<ul id="side" class="default">
+								<li><a href="p3.html#PrototypeScreens">Prototype Screenshots</a></li>
+								<li><a href="p3.html#Documentation">Documentation</a></li>
+
+
+
+							</ul>
+						</section>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	<!-- Main -->
+
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				Team Healthy &copy; 2016 | 
+				Design: <a href="http://templated.co">TEMPLATED</a> | Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+			</div>
+		</div>
+
+
+	</body>
+</html>

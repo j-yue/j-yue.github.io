@@ -1,0 +1,1697 @@
+<!--
+Team Healthy - Jennifer Cho, Jeanette Yue, Soobin Yang
+P4 - Battle of the Plates Computer Prototype
+BattleOfThePlates.html
+
+This web app provides a high fidelity in look, medium fidelity in breadth,
+and mixed fidelity in depth computer prototype of Battle of the Plates.
+Our vertical prototype will be the app's feature to track meal data.
+-->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Battle of the Plates</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-webapp-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="thumbnail.png">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="themes/testing.css" />
+    <link rel="stylesheet" href="themes/testing.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="https://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+
+
+    <script src="function.js"></script>
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+      <link rel="stylesheet" href="/resources/demos/style.css">
+
+        <style type="text/css">
+
+        .user{
+          /*text-align: center;*/
+          display: block;
+          margin: auto;
+          padding: 1em;
+          width: 25%;
+          height: auto;
+          margin-top: 0.75em;
+        }
+
+        .profButtons .ui-btn {
+          margin:1em;
+          border-radius: 5px;
+
+        }
+
+        .chart {
+
+          width: 100%;
+          height: auto;
+        }
+
+        #worded {
+          padding-left: 1em;
+          padding-right: 1em;
+
+        }
+
+        .profButtons{
+          text-align: center;
+          margin: auto;
+        }
+
+        </style>
+        <link rel="stylesheet" type="text/css"
+                  href="https://fonts.googleapis.com/css?family=Muli">
+            <style>
+              body, .ui-btn{
+                font-family: "Muli";
+                /*font-size: 48px;*/
+              }
+            </style>
+
+  <script>
+  // global variables for manipulating plate
+  // keeping track of food group progress:
+  var fruitCount=0;
+  var vegetableCount=0;
+  var grainCount=0;
+  var proteinCount=0;
+  var dairyCount=0;
+  // keep track of selected food group:
+  var currentFood="fruit";
+  // keeping track of max servings--used for progress bar + updating plate
+  var fruitGoal=4; //1 = 0.5 cups
+  var grainGoal=12; //6 oz eq
+  var proteinGoal = 11; //5.5 oz eqsftp://teamhealthy:@cs.wellesley.edu/public_html/p4/style.css
+  var vegetableGoal = 5; // 2.5 cups
+  var dairyGoal = 6; //3 cupssftp://teamhealthy:@cs.wellesley.edu/public_html/p4/style.css
+  var unit = "0.5 cup";
+
+
+
+  </script>
+
+  </head>
+
+  <body onload="updateMoreInfo()">
+
+    <div data-role="page"  data-theme="b" id="login">
+      <div data-role="header">
+        <h1>Log In</h1>
+      </div>
+
+      <div data-role="content" class="ui-content">
+
+      <form method="post">
+        <br>
+        <h1 id="loginHeading">Battle of the Plates</h1>
+        <br>
+        <label for="title2">Username</label>
+        <input type="text" name="title" id="title2" data-clear-btn="true" value="ebennet">
+        <br>
+        <label for="title3">Password</label>
+        <input type="password" name="title" id="title3" data-clear-btn="true" value="somethingidk">
+
+      </form>
+      <br>
+      <a href="#profile" class="ui-btn">Log In</a>
+
+
+      </div>
+
+  </div>
+
+
+
+   <div data-role="page"  data-theme="b" id="profile">
+
+      <div data-role="header">
+        <a href="#editProfile" class="ui-btn ui-corner-all">Edit</a>
+        <h1>My Profile</h1>
+        <a href="#profileHelp" class="ui-btn ui-corner-all ui-btn-right">Help</a>
+
+      </div>
+
+      <div data-role="content" class="ui-content">
+
+        <img src="images/elizabeth.png" class="user" alt="default" style="">
+
+        <h3>Name: Elizabeth</h3>
+        <h3>Bio: Hi, I am a sophomore majoring in CS. I'm involved in my community through house council. I love making friends, so feel free to add me!</h3>
+        <h3>Diet: Vegetarian, lactose intolerant</h3>
+
+          <div data-role="collapsible-set" id="challengeStats">
+              <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-l" data-iconpos="right">
+                <h3>Challenge Stats</h3>
+                <p>5 Wins</p>
+                <p>3 Losses</p>
+                <p>2 Ties</p>
+               </div>
+          </div>
+
+        <div class="profButtons">
+
+          <a href="#statsDaily" class="ui-btn ui-btn-inline ui-corner-all">Stats</a>
+
+          <a href="#updateGoals" class="ui-btn ui-btn-inline ui-corner-all">Personal Goals</a>
+
+        </div>
+      </div>
+
+      <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+        <div data-role="navbar" class="navigation" data-theme="b">
+          <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+          </ul>
+        </div> <!--navbar-->
+      </div> <!--footer-->
+    </div> <!--page-->
+
+    <div data-role="page"  data-theme="b" id="editProfile">
+  <div data-role="header">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Edit Profile</h1>
+  </div>
+
+  <div data-role="content" class="ui-content">
+
+  <form method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" data-clear-btn="true" value="Elizabeth">
+
+      <label for="info">Bio</label>
+      <textarea name="addinfo" id="bio">Hi, I am a sophomore majoring in CS. I'm involved in my community through house council. I love making friends, so feel free to add me!</textarea>
+
+      <label for="name">Diet</label>
+    <input type="text" name="name" id="name" data-clear-btn="true" value="Vegetarian, lactose intolerant">
+
+  </form>
+
+<a href="#editedProfile" class="ui-btn">Update Profile</a>
+
+
+  </div>
+
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar" class="navigation">
+      <ul>
+          <li> <a href="#home" data-icon="home">Home</a>
+          <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+          <li> <a href="#challenge" data-icon="alert">Challenge</a>
+          <li> <a href="#friends" data-icon="mail">Friends</a>
+      </ul>
+    </div> <!--navbar-->
+  </div> <!--footer-->
+</div>
+
+    <div data-role="page"  data-theme="b" id="emily">
+
+         <div data-role="header">
+           <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+           <h1>Friend's Profile</h1>
+           <a href="#profileHelp" class="ui-btn ui-corner-all ui-btn-right">Help</a>
+         </div>
+
+      <div data-role="content" class="ui-content">
+
+        <img src="images/emily.png" class="user" alt="default" style="">
+        <h3>Name: Emily</h3>
+        <h3>Bio: I'm a sophomore studying art history. Between being in the Widows and working in the art library, I'm pretty busy so I tend to eat wherever is closest to me. I'm trying to be healthier though.</h3>
+        <h3>Diet: All-encompassing</h3>
+
+          <div data-role="collapsible-set" id="challengeStats">
+              <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-l" data-iconpos="right">
+                <h3>Challenge Stats</h3>
+                <p>1 Won</p>
+                <p>3 Lost</p>
+                <p>2 Tie</p>
+               </div>
+          </div>
+        <div class="profButtons">
+          <a href="#sendchallenge" class="ui-btn ui-btn-inline ui-corner-all">Send Challenge</a>
+        </div>
+      </div>
+
+      <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail" class="ui-btn-active ui-state-persist">Friends</a>
+          </ul>
+        </div> <!--navbar-->
+      </div> <!--footer-->
+    </div> <!--page-->
+
+        <div data-role="page"  data-theme="b" id="anna">
+
+         <div data-role="header">
+           <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+           <h1>Friend's Profile</h1>
+           <a href="#profileHelp" class="ui-btn ui-corner-all ui-btn-right">Help</a>
+         </div>
+
+      <div data-role="content" class="ui-content">
+
+        <img src="images/anna.png" class="user" alt="default" style="">
+        <h3>Name: Anna </h3>
+        <h3>Bio: I'm a junior study economics. I'm in mock trial and also varsity crew. Because I'm in crew, I have to be really conscious about what I eat. </h3>
+        <h3>Diet: All-encompassing, peanut allergy</h3>
+
+          <div data-role="collapsible-set" id="challengeStats">
+              <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-l" data-iconpos="right">
+                <h3>Challenge Stats</h3>
+                <p>7 Won</p>
+                <p>1 Lost</p>
+                <p>1 Tie</p>
+               </div>
+          </div>
+          <div class="profButtons">
+          <a href="#sendchallenge" class="ui-btn ui-btn-inline ui-corner-all">Send Challenge</a>
+        </div>
+      </div>
+
+      <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail" class="ui-btn-active ui-state-persist">Friends</a>
+          </ul>
+        </div> <!--navbar-->
+      </div> <!--footer-->
+    </div> <!--page-->
+
+        <div data-role="page"  data-theme="b" id="pearl">
+
+         <div data-role="header">
+           <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+           <h1>Friend's Profile</h1>
+           <a href="#profileHelp" class="ui-btn ui-corner-all ui-btn-right">Help</a>
+         </div>
+
+      <div data-role="content" class="ui-content">
+
+        <img src="images/pearl.png" class="user" alt="default" style="">
+        <h3>Name: Pearl</h3>
+        <h3>Bio: I'm a biochem and French double major. I'm currently conducting independent research and also working in a lab. I also hold a job off campus. I'm so busy I sometimes forget to eat. </h3>
+        <h3>Diet: All-encompassing</h3>
+
+          <div data-role="collapsible-set" id="challengeStats">
+              <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-l" data-iconpos="right">
+                <h3>Challenge Stats</h3>
+                <p>2 Won</p>
+                <p>8 Lost</p>
+                <p>1 Tie</p>
+               </div>
+          </div>
+          <div class="profButtons">
+          <a href="#sendchallenge" class="ui-btn ui-btn-inline ui-corner-all">Send Challenge</a>
+        </div>
+      </div>
+
+      <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail" class="ui-btn-active ui-state-persist">Friends</a>
+          </ul>
+        </div> <!--navbar-->
+      </div> <!--footer-->
+    </div> <!--page-->
+
+        <div data-role="page"  data-theme="b" id="soobin">
+
+         <div data-role="header">
+           <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+           <h1>Friend's Profile</h1>
+           <a href="#profileHelp" class="ui-btn ui-corner-all ui-btn-right">Help</a>
+         </div>
+
+      <div data-role="content" class="ui-content">
+
+        <img src="images/thumbnail.png" class="user" alt="default" style="">
+        <h3>Name: Soo Bin</h3>
+        <h3>Bio: I really like eating. My APUSH teacher once said that there's  two types of people: those who live to eat and those who eat to live. I'm definitely the first type.</h3>
+        <h3>Diet: All-encompassing, lactose intolerant </h3>
+
+          <div data-role="collapsible-set" id="challengeStats">
+              <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-l" data-iconpos="right">
+                <h3>Challenge Stats</h3>
+                <p>3 Won</p>
+                <p>3 Lost</p>
+                <p>4 Tie</p>
+               </div>
+          </div>
+          <div class="profButtons">
+          <a href="#sendchallenge" class="ui-btn ui-btn-inline ui-corner-all">Send Challenge</a>
+        </div>
+      </div>
+
+      <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail" class="ui-btn-active ui-state-persist">Friends</a>
+          </ul>
+        </div> <!--navbar-->
+      </div> <!--footer-->
+    </div> <!--page-->
+
+       <div data-role="page"  data-theme="b" id="profileHelp">
+    <div data-role="header">
+      <h1>Help: Profile</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    </div>
+
+      <div data-role="content" class="ui-content">
+        <p>The profile page is where you will be able to access your and your friends' personal profile and stats. You can also access your personal goals through the profile.</p>
+
+              <div data-role="collapsible">
+                <h4>Edit</h4>
+                <p>The picture, name, bio, and diet are all able to be edited by clicking on the edit button in the upperleft corner.</p>
+              </div>
+
+              <div data-role="collapsible">
+                <h4>Stats</h4>
+                <p>This brings you to another screen, where you can see trends in your diet on a daily, weekly, or monthly basis and also see an overall trend or by food group.</p>
+              </div>
+
+              <div data-role="collapsible">
+                <h4>Personal Goals</h4>
+                <p>This brings you to another screen, where you can see a list of your personal goals and either add or delete goals. The goals are categorized into "all" goals, "current" goasl, or "complete" goals.</p>
+                </div>
+
+              <div data-role="collapsible">
+                <h4>Challenge Stats</h4>
+                <p>Gives you a a brief overview of your challenge statistics.</p>
+                </div>
+
+                <div data-role="collapsible">
+                  <h4>Send Challenge</h4>
+                  <p>Disabled in your own profile, in other users' profiles, you can send them a challenge as this will redirect you to the send challenge form.</p>
+                </div>
+  </div>
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false"data-theme="b">
+  <div data-role="navbar" class="navigation" data-theme="b">
+  <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail" class="ui-btn-active ui-state-persist">Friends</a>
+  </ul>
+  </div> <!--navbar-->
+  </div> <!--footer-->
+  </div> <!--page-->
+
+
+     <div data-role="page"  data-theme="b" id="statsDaily">
+    <div data-role="header">
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>My Stats</h1>
+    </div>
+
+    <div data-role="content" class="ui-content">
+
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#" class="ui-btn-active ui-state-persist">Daily</a>
+          <li> <a href="#statsWeekly">Weekly</a>
+          <li> <a href="#statsMonthly">Monthly</a>
+        </ul>
+      </div>
+
+    <div id="tabs">
+      <ul class="thelist">
+        <li><a href="#tabs-1d">Overall</a></li>
+        <li><a href="#tabs-2d">Grains</a></li>
+        <li><a href="#tabs-3d">Fruits</a></li>
+        <li><a href="#tabs-4d">Veggies</a></li>
+        <li><a href="#tabs-5d">Dairy</a></li>
+        <li><a href="#tabs-6d">Proteins</a></li>
+      </ul>
+
+
+      <div id="tabs-1d">
+          <p><img id="Daily" src="data/day_overall.png" height="350px" width="100%" alt="Day Overall"/>
+      </div>
+
+      <div id="tabs-2d">
+          <p><img id="Daily" src="data/day_grains.png" height="350px" width="100%" alt="Day Grains"/>
+      </div>
+
+      <div id="tabs-3d">
+          <p><img id="Daily" src="data/day_fruit.png" height="350px" width="100%" alt="Day Fruit"/>
+      </div>
+
+      <div id="tabs-4d">
+          <p><img id="Daily" src="data/day_veggies.png" height="350px" width="100%" alt="Day Veggies"/>
+      </div>
+
+      <div id="tabs-5d">
+          <p><img id="Daily" src="data/day_dairy.png" height="350px" width="100%" alt="Day Dairy"/>
+      </div>
+
+      <div id="tabs-6d">
+          <p><img id="Daily" src="data/day_proteins.png" height="350px" width="100%" alt="Day Proteins"/>
+      </div>
+    </div>
+
+
+    </div>
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+      <div data-role="navbar" class="navigation" data-theme="b">
+        <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+        </ul>
+      </div> <!--navbar-->
+    </div> <!--footer-->
+</div>
+
+  <div data-role="page"  data-theme="b" id="statsWeekly">
+    <div data-role="header">
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>My Stats</h1>
+    </div>
+
+    <div data-role="content" class="ui-content">
+
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#statsDaily">Daily</a>
+          <li> <a href="#" class="ui-btn-active ui-state-persist">Weekly</a>
+          <li> <a href="#statsMonthly">Monthly</a>
+        </ul>
+      </div>
+
+    <div id="tabs-w">
+      <ul class="thelist">
+        <li><a href="#tabs-1w">Overall</a></li>
+        <li><a href="#tabs-2w">Grains</a></li>
+        <li><a href="#tabs-3w">Fruits</a></li>
+        <li><a href="#tabs-4w">Veggies</a></li>
+        <li><a href="#tabs-5w">Dairy</a></li>
+        <li><a href="#tabs-6w">Proteins</a></li>
+      </ul>
+
+
+      <div id="tabs-1w">
+          <p><img id="Wellesley" src="data/weekly_overall.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-2w">
+          <p><img id="Wellesley" src="data/weekly_grains.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-3w">
+          <p><img id="Wellesley" src="data/weekly_fruit.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-4w">
+          <p><img id="Wellesley" src="data/weekly_veggies.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-5w">
+          <p><img id="Wellesley" src="data/weekly_dairy.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-6w">
+          <p><img id="Wellesley" src="data/weekly_proteins.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+    </div>
+
+
+    </div>
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+      <div data-role="navbar" class="navigation" data-theme="b">
+        <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+        </ul>
+      </div> <!--navbar-->
+    </div> <!--footer-->
+</div>
+
+  <div data-role="page"  data-theme="b" id="statsMonthly">
+    <div data-role="header">
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>My Stats</h1>
+    </div>
+
+    <div data-role="content" class="ui-content">
+
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#statsDaily">Daily</a>
+          <li> <a href="#statsWeekly">Weekly</a>
+          <li> <a href="#" class="ui-btn-active ui-state-persist">Monthly</a>
+        </ul>
+      </div>
+
+    <div id="tabs-m">
+      <ul class="thelist">
+        <li><a href="#tabs-1m">Overall</a></li>
+        <li><a href="#tabs-2m">Grains</a></li>
+        <li><a href="#tabs-3m">Fruits</a></li>
+        <li><a href="#tabs-4m">Veggies</a></li>
+        <li><a href="#tabs-5m">Dairy</a></li>
+        <li><a href="#tabs-6m">Proteins</a></li>
+      </ul>
+
+
+      <div id="tabs-1m">
+          <p><img id="Wellesley" src="data/monthly_overall.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-2m">
+          <p><img id="Wellesley" src="data/monthly_grains.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-3m">
+          <p><img id="Wellesley" src="data/monthly_fruit.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-4m">
+          <p><img id="Wellesley" src="data/monthly_veggies.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-5m">
+          <p><img id="Wellesley" src="data/monthly_dairy.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+
+      <div id="tabs-6m">
+          <p><img id="Wellesley" src="data/monthly_proteins.png" height="350px" width="100%" alt="Wellesley College campus"/>
+      </div>
+    </div>
+
+
+    </div>
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+      <div data-role="navbar" class="navigation" data-theme="b">
+        <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+        </ul>
+      </div> <!--navbar-->
+    </div> <!--footer-->
+</div>
+
+
+<div data-role="page"  data-theme="b" id="createGoals">
+  <div data-role="header">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Personal Goals</h1>
+  </div>
+
+  <div data-role="content" class="ui-content">
+
+  <form method="post">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" data-clear-btn="true">
+
+      <label for="info">Description</label>
+      <textarea name="addinfo" id="description"></textarea>
+
+  </form>
+
+<a href="#updateGoals" class="ui-btn" onclick="addGoal();">Create</a>
+
+
+  </div>
+
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar" class="navigation">
+      <ul>
+          <li> <a href="#home" data-icon="home">Home</a>
+          <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+          <li> <a href="#challenge" data-icon="alert">Challenge</a>
+          <li> <a href="#friends" data-icon="mail">Friends</a>
+      </ul>
+    </div> <!--navbar-->
+  </div> <!--footer-->
+</div>
+
+
+<div data-role="page"  data-theme="b" id="updateGoals">
+    <div data-role="header">
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>Personal Goals</h1>
+      <a href="#goalsHelp" class="ui-btn ui-corner-all ui-btn-right">Help</a>
+    </div>
+
+    <div data-role="content" class="ui-content">
+
+  <div class = "profButtons">
+
+        <a href="#" class="worded" data-role="button" data-inline="true">All</a>
+        <a href="#" class="worded" data-role="button" data-inline="true">Current</a>
+        <a href="#" class="worded" data-role="button" data-inline="true">Complete</a>
+
+  </div>
+
+  <div class = "profButtons">
+    <a href="#createGoals" data-role="button" data-inline="true" data-icon="plus" data-iconpos="notext"></a>
+    <a href="#updateGoals2" data-role="button" data-inline="true" data-icon="minus" data-iconpos="notext"></a>
+  </div>
+
+
+<ul data-role="listview" data-theme="b" data-inset="true" id="listGoals">
+
+  <span id="a2"></span>
+
+  <li class="one">
+        <input class = 'mycheckbox' type='checkbox' id='1'>
+        <label for='1'>Soymilk for one week</label>
+      <!-- <a href='' data-role='button' data-inline='false' data-icon='minus'><div>Soymilk for one week</div></a> -->
+    <h4>Substitute milk with soymilk</h4>
+  </li>
+
+  <li class="two">
+      <input class="mycheckbox" type="checkbox" id="2"/>
+      <label for="2">Alternative Protein Sources</label>
+    <h4>Substitute meat with soy products</h4>
+  </li>
+
+
+
+</ul>
+
+  </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+      <div data-role="navbar" class="navigation">
+        <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+        </ul>
+      </div> <!--navbar-->
+    </div> <!--footer-->
+</div>
+
+<div data-role="page"  data-theme="b" id="updateGoals2">
+    <div data-role="header">
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>Personal Goals</h1>
+      <a href="#goalsHelp" class="ui-btn ui-corner-all ui-btn-right">Help</a>
+    </div>
+
+    <div data-role="content" class="ui-content">
+
+  <div class = "profButtons">
+
+        <a href="#" class="worded" data-role="button" data-inline="true">All</a>
+        <a href="#" class="worded" data-role="button" data-inline="true">Current</a>
+        <a href="#" class="worded" data-role="button" data-inline="true">Complete</a>
+
+  </div>
+
+  <div class = "profButtons">
+    <a href="#createGoals" data-role="button" data-inline="true" data-icon="plus" data-iconpos="notext"></a>
+    <a href="#updateGoals" data-role="button" data-inline="true" data-icon="minus" data-iconpos="notext"></a>
+  </div>
+
+
+<ul data-role="listview" data-theme="b" data-inset="true" id="listGoals2">
+
+  <span id="b2"></span>
+
+  <li class="one">
+    <h3>
+    <a href='' onclick='testing(".one");' data-role='button' data-inline='false' data-icon='minus'>Soymilk for one week</a>
+      <h4>Substitute milk with soymilk</h4>
+    </h3>
+  </li>
+
+  <li class="two">
+    <h3>
+    <a href='' onclick='testing(".two");' data-role='button' data-inline='false' data-icon='minus'>Alternative protein sources</a>
+      <h4>Substitute meat with soy products</h4>
+  </h3>
+</li>
+
+</ul>
+
+  </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+      <div data-role="navbar" class="navigation">
+        <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+        </ul>
+      </div> <!--navbar-->
+    </div> <!--footer-->
+</div>
+
+
+  <div data-role="page"  data-theme="b" id="goalsHelp">
+    <div data-role="header">
+      <h1>Help: Personal Goals</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    </div>
+
+      <div data-role="content" class="ui-content">
+        <p>The profile page is where you will be able to access your personal profile and stats. You can also access your personal goals through the profile.</p>
+
+              <div data-role="collapsible">
+                <h4>+</h4>
+                <p>Create a new personal goal.</p>
+              </div>
+
+              <div data-role="collapsible">
+                <h4>-</h4>
+                <p>Delete a personal goal</p>
+              </div>
+
+              <div data-role="collapsible">
+                <h4>Checkboxes</h4>
+                <p>To mark a goal as complete, tap its corresponding checkbox</p>
+                </div>
+
+              <div data-role="collapsible">
+                <h4>All/Current/Complete</h4>
+                <p>Look at the goals that fit under each category.</p>
+                </div>
+
+  </div>
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+  <div data-role="navbar" class="navigation" data-theme="b">
+  <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+  </ul>
+  </div> <!--navbar-->
+  </div> <!--footer-->
+  </div> <!--page-->
+
+
+   <div data-role="page"  data-theme="b" id="challenge">
+
+   <div data-role="header">
+
+     <h1>Challenge</h1>
+     <a href="#challengehelp" class="ui-btn ui-corner-all ui-btn-right">Help</a>
+
+   </div>
+
+   <p style="text-align:center;">Challenge your friends to healthy eating, and see who comes out on top!</p>
+
+   <div data-role="content" class="ui-content">
+     <a href="#sendchallenge" class="ui-btn ui-corner-all">Send a challenge</a>
+     <a href="#pending" class="ui-btn ui-corner-all">Pending challenges</a>
+     <a href="#currentchallenges" class="ui-btn ui-corner-all">Current challenges</a>
+   </div>
+
+   <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+   <div data-role="navbar" class="navigation" data-theme="b">
+   <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert" class="ui-btn-active ui-state-persist">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+   </ul>
+   </div> <!--navbar-->
+   </div> <!--footer-->
+   </div> <!--page-->
+
+
+
+
+
+
+  <div data-role="page"  data-theme="b" id="sendchallenge">
+
+  <div data-role="header">
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>New Challenge</h1>
+  </div>
+
+  <div data-role="content" class="ui-content">
+            <br>
+            <br>
+
+            <div class="ui-widget">
+              <label for="tags">Recipients: </label>
+              <input id="tags" size="50">
+            </div>
+            <br>
+            <label for="select-native-1">Duration:</label>
+                <select name="select-native-1" id="select-native-1"data-theme="b">
+                    <option value="1">1 week</option>
+                    <option value="2">2 weeks</option>
+                    <option value="3">3 weeks</option>
+                    <option value="4">4 weeks</option>
+                    <option value="5">5 weeks</option>
+                </select>
+
+            <br>
+            <br>
+
+            <a href="#popupBasic" data-role="button" data-rel="popup" data-theme="b">Send challenge</a>
+       <div data-role="popup"  class="centered" id="popupBasic" style="width:350px;height:200px; position:center;">
+              <br>
+              <br>
+              <br>
+            <p style="text-align:center; font-size:12; display:block;">Challenge sent!<p>
+
+              <div class = "profButtons">
+
+          </div>
+
+
+      </div>
+  </div>
+
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+    <div data-role="navbar" class="navigation" data-theme="b">
+    <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert" class="ui-btn-active ui-state-persist">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+    </ul>
+    </div> <!--navbar-->
+
+  </div> <!--footer-->
+  </div> <!--page-->
+
+
+
+
+  <div data-role="page"  data-theme="b" id="pending">
+
+    <div data-role="header">
+        <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+        <h1>Pending Challenges</h1>
+    </div>
+
+    <div data-role="content" class="ui-content">
+
+        <div class="ui-body ui-body-a">
+          <p style="text-align:center;"> Pearl challenges you to a week long challenge! </p>
+
+
+
+
+
+
+          <div class="profButtons">
+
+             <a href="#popupBasic1" class="ui-btn ui-btn-inline" data-role="button" data-rel="popup" data-theme="b" style="background-color:#ffc04c;">Accept</a>
+
+       <div data-role="popup"  class="centered" id="popupBasic1" style="width:350px;height:200px; position:center;">
+              <br>
+              <br>
+              <br>
+            <p style="text-align:center; font-size:12; display:block;">Challenge accepted!<p>
+
+              <div class = "profButtons">
+            <a href="#nochallenges" class="ui-btn ui-btn-inline" style="text-align:center; position:center; width:100px; margin:auto; background-color:#ffc04c;" data-theme="b"> Ok</a>
+          </div>
+
+
+      </div>
+
+
+             <a href="#popupBasic2" class="ui-btn ui-btn-inline" data-role="button" data-rel="popup" data-theme="b">Decline</a>
+
+
+            <div data-role="popup" class="centered" id="popupBasic2"  style="width:350px;height:200px; position:center;">
+              <br>
+              <br>
+              <br>
+            <p style="text-align:center; font-size:12; display:block; ">Are you sure you want to decline?<p>
+              <div class="profButtons">
+                <a href="#nochallenges" class="ui-btn ui-btn-inline" style="background-color:#ffc04c;"> Yes</a>
+                <a href="#pendingchallenges" class="ui-btn ui-btn-inline" style="background-color:#ffc04c;"> No</a>
+              </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+      <div data-role="navbar" class="navigation" data-theme="b">
+      <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert" class="ui-btn-active ui-state-persist">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+      </ul>
+      </div> <!--navbar-->
+
+    </div> <!--footer-->
+  </div> <!--page-->
+
+
+
+  <div data-role="page"  data-theme="b" id="nochallenges">
+
+    <div data-role="header">
+        <a href="#challenge" data-icon="back" data-icon="back">Back</a>
+        <h1>Pending Challenges</h1>
+    </div>
+
+    <div data-role="content" class="ui-content">
+
+        <div class="ui-body ui-body-a">
+          <p style="text-align:center;"> No pending challenges :(</p>
+        </div>
+    </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+      <div data-role="navbar" class="navigation" data-theme="b">
+      <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert" class="ui-btn-active ui-state-persist">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+      </ul>
+      </div> <!--navbar-->
+
+    </div> <!--footer-->
+  </div> <!--page-->
+
+
+
+
+
+  <div data-role="page"  data-theme="b" id="currentchallenges">
+
+    <div data-role="header">
+        <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+        <h1>Current Challenges</h1>
+    </div>
+
+    <div data-role="content" class="ui-content">
+
+            <ul data-role="listview" data-theme="b" data-inset="true">
+
+
+                <!-- list items -->
+                <li><a href="#challengedata">
+                    <h3 class="ui-li-heading">1 week Challenge with Pearl - 2 days left!</h3>
+                    <p class="ui-li-desc">Pearl: 7 day streak <br> You: 6 day streak</p>
+                    </a>
+                </li>
+
+                <li><a href="#challengedata">
+                    <h3 class="ui-li-heading">2 weeks Challenge with Anna - 12 days left!</h3>
+                    <p class="ui-li-desc">Anna: 4 day streak <br> You: 10 day streak</p>
+                    </a>
+                </li>
+
+                </ul>
+
+    </div>
+
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+      <div data-role="navbar" class="navigation" data-theme="b">
+      <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert" class="ui-btn-active ui-state-persist">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+      </ul>
+      </div> <!--navbar-->
+
+    </div> <!--footer-->
+  </div> <!--page-->
+
+
+
+
+  <div data-role="page"  data-theme="b" id="challengedata">
+
+    <div data-role="header">
+        <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+        <h1>Challenge Data</h1>
+    </div>
+
+
+
+
+
+
+<div role="main" class="ui-content">
+    <div data-role="tabs">
+      <!-- <div id="bar" data-role="navbar"> -->
+        <ul class="thelist">
+          <li><a href="#fragment-1" class="ui-btn-active">Overall</a></li>
+          <li><a href="#fragment-2">Grains</a></li>
+          <li><a href="#fragment-3">Fruits</a></li>
+          <li><a href="#fragment-4">Veggies</a></li>
+          <li><a href="#fragment-5">Dairy</a></li>
+          <li><a href="#fragment-6">Proteins</a></li>
+        </ul>
+      <!-- </div> -->
+      <div id="frags">
+      <div id="fragment-1">
+            <p><img id="Daily" src="data/day_overall.png" height="350px" width="100%" alt="Day Overall"/>
+      </div>
+      <div id="fragment-2">
+           <p><img id="Daily" src="data/day_grains.png" height="350px" width="100%" alt="Day Grains"/>
+      </div>
+      <div id="fragment-3">
+           <p><img id="Daily" src="data/day_fruit.png" height="350px" width="100%" alt="Day Fruit"/>
+      </div>
+      <div id="fragment-4">
+           <p><img id="Daily" src="data/day_veggies.png" height="350px" width="100%" alt="Day Veggies"/>
+      </div>
+      <div id="fragment-5">
+           <p><img id="Daily" src="data/day_dairy.png" height="350px" width="100%" alt="Day Dairy"/>
+      </div>
+      <div id="fragment-6">
+           <p><img id="Daily" src="data/day_proteins.png" height="350px" width="100%" alt="Day Proteins"/>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+      <div data-role="navbar" class="navigation" data-theme="b">
+      <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert" class="ui-btn-active ui-state-persist">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+      </ul>
+      </div> <!--navbar-->
+
+    </div> <!--footer-->
+  </div> <!--page-->
+
+
+
+  <div data-role="page" id="challengehelp" data-theme="b">
+    <div data-role="header">
+      <h1>Help: Challenges</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    </div>
+
+      <div data-role="content" class="ui-content">
+        <p>You can challenege your friends to see who can keep up the longest steak of balanced, healthy eating.</p>
+
+              <div data-role="collapsible">
+                <h4>What is a challenge?</h4>
+                <p>Participants must reach the daily recommended intake of all food groups to keep the streak going. You can include any number of friends in your challenge.</p>
+              </div>
+
+                    <div data-role="collapsible">
+                      <h4>Checking challenge stats</h4>
+                      <p>You can check your current challenges under the current challenges page. You can check out a line graph showing your or your friends progress.</p>
+                    </div>
+
+
+  </div>
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+  <div data-role="navbar" class="navigation" data-theme="b">
+  <ul>
+            <li> <a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+  </ul>
+  </div> <!--navbar-->
+  </div> <!--footer-->
+  </div> <!--page-->
+
+
+
+
+  <div data-role="page" id="help" data-theme="b">
+    <div data-role="header">
+      <h1>Help: Home</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    </div>
+
+      <div data-role="content" class="ui-content">
+        <p>The home page is where you will be able to record your meals and learn
+          more about food groups and their health benefits.</p>
+
+              <div data-role="collapsible">
+                <h4>The Plate and Cup</h4>
+                <p>Click on one of the areas of the plate to interact with
+                food groups. The default has been set to "Fruits."</p>
+              </div>
+
+                    <div data-role="collapsible">
+                      <h4>+ and -</h4>
+                      <p>Update personal daily intake by either 0.5 cup or 1
+                      ounce depending on the selected food group.</p>
+                    </div>
+                    <div data-role="collapsible">
+                      <h4>More Info</h4>
+                      <p>Here, you will be
+                      able to look at the individual progress for each food
+                    group and to learn more about them and learn more about food conversions and general nutrition information.</p>
+                    </div>
+
+  </div>
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+  <div data-role="navbar" class="navigation" data-theme="b">
+  <ul>
+            <li> <a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+  </ul>
+  </div> <!--navbar-->
+  </div> <!--footer-->
+  </div> <!--page-->
+
+
+  <div data-role="page"  data-theme="b" id="home">
+
+  <div data-role="header">
+    <h1>Home</h1>
+    <a href ="#help" class="ui-btn-right" back-btn="false">Help</a>
+
+  </div>
+
+  <div data-role="content" class="ui-content">
+
+
+
+    <!-- this is where the interactive plate goes -->
+    <div id = "myplate">
+      <div class = "myplate" id = "cup">
+        <!-- <img id = "tempCup" src="images/cup.png"> -->
+        <img src="plate/dairyplate0.png" id="dairy" onclick="setFood(this.id);highlight(this);">
+      </div>
+    <div class = "myplate" id = "plate">
+      <!-- <img id = "tempPlate" src="images/plate.png"> -->
+      <img src="plate/fruitplate0.png" id="fruit" class="plate" onclick="setFood(this.id);highlight(this);">
+      <img src="plate/grainplate0.png" id="grain" class="plate" onclick="setFood(this.id);highlight(this);">
+      <br>
+      <img src="plate/vegetableplate0.png" id="vegetable" class="plate" onclick="setFood(this.id);highlight(this);">
+      <img src="plate/proteinplate0.png" id="protein" class="plate" onclick="setFood(this.id);highlight(this);">
+    </div>
+
+  </div>
+
+<!-- this is where user can access options  -->
+  <div id = "option">
+
+    <img src="images/fruit.png" id="foodgroup">
+
+    <p id="addAlert"></p>
+    <br>
+    <a class = "options" id="add" onclick="plus();" data-role="button" data-icon="plus" data-inline="true">0.5 cup</a>
+    <a class = "options" id="subtract" onclick="minus();" data-role="button" data-icon="minus" data-inline="true">0.5 cup</a>
+    <br>
+    <a class = "options" id="moreinfobutton" href="" data-role="button" data-inline="true">More Info</a>
+    <!-- <div data-role="popup" id="popupInfo" class="ui-content"><p id="popuptext"></p></div> -->
+
+  </div>
+</div> <!--end of content-->
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+  <div data-role="navbar" class="navigation" data-theme="b">
+  <ul>
+            <li> <a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+  </ul>
+  </div> <!--navbar-->
+  </div> <!--footer-->
+  </div> <!--page-->
+
+  <div data-role="page"  data-theme="b" id="moreinfofruit">
+
+    <div data-role="header">
+      <h1>More Info</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <a href="#help" back-btn="false">Help</a>
+    </div>
+
+    <div data-role="content" class="ui-content">
+    <h1 class="infoHeading">Fruits</h1>
+        <h2>Daily Intake</h2>
+        <!-- <div class="progress" id="progressFruit"></div> -->
+        <div class="outer">
+          <div class="inner" id="progressfruit"></div>
+        </div>
+      <h2>Recommended Foods</h2>
+      <img src="images/fruit1.jpg" class="infopic">
+      <img src="images/fruit2.jpg" class="infopic">
+      <img src="images/fruit3.jpg" class="infopic">
+      <h2>General Info</h2>
+      <p>According to the USDA, fruits are low in fat, sodium, and calories. In
+        addition, they are sources of potassium, dietary fiber, vitamin C, and
+        folate, which are crucial since:
+        <ul>
+          <li>Potassium helps maintain healthy blood pressure</li>
+          <li>Dietary fiber helps reduce blood cholesterol</li>
+          <li>Vitamin C is needed for growth and repair of bodily tissues</li>
+        </ul>
+        Overall, including fruits in diets may reduce risk for heart disease,
+        protect against some types of cancer, and reduce the risk of developing
+        kidney stones and bone loss.
+
+        <h2>Conversions</h2>
+        <img src="charts/fruit1.png" class="chart">
+        <img src="charts/fruit2.png" class="chart">
+        <img src="charts/fruit3.png" class="chart">
+
+
+    </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+    <div data-role="navbar" class="navigation" data-theme="b">
+    <ul>
+            <li> <a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert" >Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+    </ul>
+    </div> <!--navbar-->
+    </div> <!--footer-->
+  </div> <!--page-->
+
+  <div data-role="page"  data-theme="b" id="moreinfovegetable">
+
+    <div data-role="header">
+      <h1>More Info</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <a href="#help" back-btn="false">Help</a>
+    </div>
+
+    <div data-role="content" class="ui-content">
+    <h1 class="infoHeading">Vegetables</h1>
+        <h2>Daily Intake</h2>
+        <div class="outer">
+          <div class="inner" id="progressvegetable"></div>
+    </div>
+      <h2>Recommended Foods</h2>
+      <img src="images/vegetable1.jpg" class="infopic">
+      <img src="images/vegetable2.jpg" class="infopic">
+      <img src="images/vegetable3.jpg" class="infopic">
+      <h2>General Info</h2>
+      <p>According to the USDA, vegetables are low in fat and calories. They
+        are important sources of potassium, dietary fiber, folate, vitamin A,
+        and vitamin C, which are crucial since:
+        <ul>
+          <li>Potassium helps maintain healthy blood pressure</li>
+          <li>Dietary fiber helps reduce blood cholesterol</li>
+          <li>Folate helps red blood cells form
+          <li>Vitamin A keeps eyes and skin healthy
+          <li>Vitamin C helps heal cuts and wounds</li>
+        </ul>
+        Overall, including vegetables in diets may reduce the risk for heart
+
+        disease, protect against types of cancer, and lower calorie intake.
+        <h2>Conversions</h2>
+        <img src="charts/veggies1.png" class="chart">
+        <img src="charts/veggies2.png" class="chart">
+        <img src="charts/veggies3.png" class="chart">
+        <img src="charts/veggies4.png" class="chart">
+        <img src="charts/veggies5.png" class="chart">
+
+    </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+    <div data-role="navbar" class="navigation" data-theme="b">
+    <ul>
+            <li> <a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+    </ul>
+    </div> <!--navbar-->
+    </div> <!--footer-->
+  </div> <!--page-->
+
+  <div data-role="page"  data-theme="b" id="moreinfograin">
+
+    <div data-role="header">
+      <h1>More Info</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <a href="#help" back-btn="false">Help</a>
+    </div>
+
+    <div data-role="content" class="ui-content">
+    <h1 class="infoHeading">Grains</h1>
+
+        <h2>Daily Intake</h2>
+        <div class="outer">
+          <div class="inner" id="progressgrain"></div>
+      </div>
+
+      <h2>Recommended Foods</h2>
+      <img src="images/grain1.jpg" class="infopic">
+      <img src="images/grain2.jpg" class="infopic">
+      <img src="images/grain3.jpg" class="infopic">
+      <h2>General Info</h2>
+      <p>According to the USDA, grains are important sources of dietary fiber,
+        B vitamins (thiamin, riboflavin, niacin, and folate) and minerals (iron,
+        magnesium, and selenium), which are crucial since:
+        <ul>
+          <li>Dietary fiber may help reduce blood cholesterol levels</li>
+          <li>B vitamins needed in metabolism</li>
+          <li>Iron needed to carry oxygen to blood</li>
+        </ul>
+        Overall, including grains in diets may reduce risk for heart disease,
+        reduce constipation, help with weight management, and may reduce constipation.
+
+        <h2>Conversions</h2>
+        <img src="charts/grains1.png" class="chart">
+        <img src="charts/grains2.png" class="chart">
+        <img src="charts/grains3.png" class="chart">
+        <img src="charts/grains4.png" class="chart">
+
+    </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+    <div data-role="navbar" class="navigation" data-theme="b">
+    <ul>
+            <li> <a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+    </ul>
+    </div> <!--navbar-->
+    </div> <!--footer-->
+  </div> <!--page-->
+
+  <div data-role="page"  data-theme="b" id="moreinfoprotein">
+
+    <div data-role="header">
+      <h1>More Info</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <a href="#help" back-btn="false">Help</a>
+    </div>
+
+    <div data-role="content" class="ui-content">
+    <h1 class="infoHeading">Protein</h1>
+
+        <h2>Daily Intake</h2>
+        <div class="outer">
+          <div class="inner" id="progressprotein"></div>
+
+      </div>
+      <h2>Recommended Foods</h2>
+      <img src="images/protein1.jpg" class="infopic">
+      <img src="images/protein2.jpg" class="infopic">
+      <img src="images/protein3.jpg" class="infopic">
+      <h2>General Info</h2>
+      <p>Sources of protein include meat, poultry, seafood, peas, and nuts. According
+        to the USDA, protein is important for building bones, muscles, cartilage,
+         skin, and blood. In addition to B vitamins and minerals, protein also
+         contains vitamin E and omega-3 fatty acids, which are crucial since:
+        <ul>
+          <li>B vitamins help the body release energy</li>
+          <li>Omega-3 fatty acids reduce the risk of heart disease</li>
+        </ul>
+
+        <h2>Conversions</h2>
+        <img src="charts/proteins1.png" class="chart">
+        <img src="charts/proteins2.png" class="chart">
+
+    </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+    <div data-role="navbar" class="navigation" data-theme="b">
+    <ul>
+            <li> <a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+    </ul>
+    </div> <!--navbar-->
+    </div> <!--footer-->
+  </div> <!--page-->
+
+  <div data-role="page"  data-theme="b" id="moreinfodairy">
+
+    <div data-role="header">
+      <h1>More Info</h1>
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <a href="#help" back-btn="false">Help</a>
+    </div>
+
+    <div data-role="content" class="ui-content">
+    <h1 class="infoHeading">Dairy</h1>
+
+        <h2>Daily Intake</h2>
+        <div class="outer">
+          <div class="inner"  id="progressdairy"></div>
+      </div>
+
+      <h2>Recommended Foods</h2>
+      <img src="images/dairy1.jpg" class="infopic">
+      <img src="images/dairy2.jpg" class="infopic">
+      <img src="images/dairy3.jpg" class="infopic">
+      <h2>General Info</h2>
+      <p>According to the USDA, dairy is an important source of calcium, which is
+        used for building bones and teeth and in maintaning bone mass. Some
+        products like yogurt and soymilk provide potassium. Overall, consumption
+        of dairy products is most crucial for children since calcium plays an
+        important role in building bone mass.</p>
+        <p>For those that cannot consume milk products, alternatives include:
+            <ul>
+              <li>Calcium-fortified juices, cereal, breads, rice milk, or almond
+              milk</li>
+              <li>Soy products</li>
+              <li>Kale and bok choy</li>
+            </ul>
+        </p>
+        <h2>Conversions</h2>
+        <img src="charts/dairy1.png" class="chart">
+        <img src="charts/dairy2.png" class="chart">
+
+    </div>
+
+    <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+    <div data-role="navbar" class="navigation" data-theme="b">
+    <ul>
+            <li> <a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+            <li> <a href="#profile" data-icon="user">Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail">Friends</a>
+    </ul>
+    </div> <!--navbar-->
+    </div> <!--footer-->
+  </div> <!--page-->
+
+<div data-role="page"  data-theme="b" id="addFriend">
+  <div data-role="header">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Add Friend</h1>
+  </div>
+
+  <div data-role="content" class="ui-content">
+
+  <form method="post">
+    <br>
+    <label for="username">Username (Used to look for your friend)</label>
+    <input type="text" name="username" id="username" data-clear-btn="true">
+  <br>
+      <label for="nickname">Nickname (Name which your friend will be saved as in your friend's list)</label>
+      <textarea name="nickname" id="nickname"></textarea>
+
+  </form>
+<br>
+<a href="#friendAdded" class="ui-btn">Add Friend</a>
+
+  </div>
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar" class="navigation">
+      <ul>
+          <li> <a href="#home" data-icon="home">Home</a>
+          <li> <a href="#profile" data-icon="user" >Profile</a>
+          <li> <a href="#challenge" data-icon="alert">Challenge</a>
+          <li> <a href="#friends" data-icon="mail" class="ui-btn-active ui-state-persist">Friends</a>
+      </ul>
+    </div> <!--navbar-->
+  </div> <!--footer-->
+</div>
+
+  <div data-role="page"  data-theme="b" id="friendAdded">
+
+  <div data-role="header">
+    <a href="#addFriend">Add Friend</a>
+    <h1>My Friends</h1>
+  </div>
+
+  <div data-role="content" class="ui-content">
+      <form class="ui-filterable">
+        <input id="myFilter" data-type="search">
+      </form>
+
+      <ul data-role="listview" data-theme="a" data-filter="true" data-input="#myFilter" data-autodividers="true" >
+
+        <li><a class="names" href="#emily">Emily</a></li>
+        <li><a class="names" href="#anna">Anna</a></li>
+        <li><a class="names" href="#pearl">Pearl</a></li>
+        <li><a class="names" href="#soobin">Soo Bin</a></li>
+
+      </ul>
+
+  </div>
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+  <div data-role="navbar" class="navigation" data-theme="b">
+  <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail" class="ui-btn-active ui-state-persist">Friends</a>
+  </ul>
+  </div> <!--navbar-->
+  </div> <!--footer-->
+  </div> <!--page-->
+
+  <div data-role="page"  data-theme="b" id="friends">
+
+  <div data-role="header">
+    <a href="#addFriend">Add Friend</a>
+    <h1>My Friends</h1>
+  </div>
+
+  <div data-role="content" class="ui-content">
+      <form class="ui-filterable">
+        <input id="myFilter" data-type="search">
+      </form>
+
+      <ul data-role="listview" data-theme="b"data-filter="true" data-input="#myFilter" data-autodividers="true" >
+
+        <li><a class="names" href="#emily">Emily</a></li>
+        <li><a class="names" href="#anna">Anna</a></li>
+        <li><a class="names" href="#pearl">Pearl</a></li>
+      </ul>
+
+  </div>
+
+  <div  data-role="footer" data-id="nav" data-position="fixed" data-tap-toggle="false" data-theme="b">
+  <div data-role="navbar" class="navigation" data-theme="b">
+  <ul>
+            <li> <a href="#home" data-icon="home">Home</a>
+            <li> <a href="#profile" data-icon="user" >Profile</a>
+            <li> <a href="#challenge" data-icon="alert">Challenge</a>
+            <li> <a href="#friends" data-icon="mail" class="ui-btn-active ui-state-persist">Friends</a>
+  </ul>
+  </div> <!--navbar-->
+  </div> <!--footer-->
+  </div> <!--page-->
+
+
+
+  <script>
+   $(function() {
+     var availableTags = [
+       "Emily",
+       "Anna",
+       "Pearl"
+     ];
+     function split( val ) {
+       return val.split( /,\s*/ );
+     }
+     function extractLast( term ) {
+       return split( term ).pop();
+     }
+
+     $( "#tags" )
+       // don't navigate away from the field on tab when selecting an item
+       .bind( "keydown", function( event ) {
+         if ( event.keyCode === $.ui.keyCode.TAB &&
+             $( this ).autocomplete( "instance" ).menu.active ) {
+           event.preventDefault();
+         }
+       })
+       .autocomplete({
+         minLength: 0,
+         source: function( request, response ) {
+           // delegate back to autocomplete, but extract the last term
+           response( $.ui.autocomplete.filter(
+             availableTags, extractLast( request.term ) ) );
+         },
+         focus: function() {
+           // prevent value inserted on focus
+           return false;
+         },
+         select: function( event, ui ) {
+           var terms = split( this.value );
+           // remove the current input
+           terms.pop();
+           // add the selected item
+           terms.push( ui.item.value );
+           // add placeholder to get the comma-and-space at the end
+           terms.push( "" );
+           this.value = terms.join( ", " );
+           return false;
+         }
+       });
+   });
+
+
+
+   $(function() {
+     $( "#tabs" ).tabs();
+   });
+
+   $(function() {
+     $( "#tabs-w" ).tabs();
+   });
+
+   $(function() {
+     $( "#tabs-m" ).tabs();
+   });
+
+$(function() {
+    $('.confirm').click(function() {
+        return window.confirm("Are you sure?");
+    });
+});
+   </script>
+
+
+</body>
+</html>

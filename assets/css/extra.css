@@ -1,0 +1,11 @@
+#education span{
+  float: right;
+}
+
+#education ul {
+  list-style-type: none;
+}
+
+#education li {
+  display: inline;
+}

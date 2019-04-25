@@ -1,0 +1,103 @@
+.navigation > li{
+  font-size: 5px;
+}
+
+.thelist > li {
+  width: 30%;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.names{
+background-color: #426e86;
+}
+
+
+.plate{
+  max-height: 30vh;
+  max-width: 40vw;
+  display: inline;
+  /*margin: auto;*/
+  /*margin: 3px;*/
+  /*margin: auto 0;*/
+  margin: 3px;
+  text-align: center;
+}
+
+.infoHeading{
+    text-align: center;
+}
+
+#addAlert{
+    height: 5px;
+}
+
+#cup{
+  /*float: right;*/
+  display: block;
+  margin-left: 60vw;
+  max-height: 30vh;
+  max-width: 50vw;
+}
+
+#foodgroup{
+  /*max-height: 20%;
+  max-width: 20%;*/
+  display: block;
+  margin: auto;
+  height: 15vh;
+  width: 20vw;
+}
+
+#option{
+  text-align: center;
+}
+
+.options {
+  display: inline-block;
+  margin: 3px;
+}
+
+.infopic{
+  display: inline-block;
+  border-radius: 5px;
+  /*max-height: 20vh;
+  max-width: 20vw;*/
+  margin: 1px;
+  height: 15vh;
+  max-width: 25vw;
+}
+
+.outer{
+  /*background-color: black;*/
+  height: 10vh;
+  border: 3px solid #fbd584;
+  border-radius: 3px;
+  width: 90vw;
+}
+
+.inner{
+  background-color: #fbd584;
+  height: 10vh;
+}
+
+#progressfruit{
+  width: 0;
+}
+
+#progressvegetable{
+  width: 0;
+}
+
+#progressgrain{
+  width: 0;
+}
+
+#progressprotein{
+  width: 0;
+}
+
+#progressdairy{
+  width: 0;
+}
