@@ -1,4 +1,4 @@
-#education span{
+#education span, #experience span{
   float: right;
 }
 
@@ -6,6 +6,40 @@
   list-style-type: none;
 }
 
-#education li {
+#education ul li {
   display: inline;
+  padding-right: 0.75em;
 }
+
+/*
+.row {
+  padding-bottom: 3em;
+} */
+
+.images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: row-wrap;
+  padding-bottom: 1em;
+}
+
+.images a {
+  padding: 1em;
+}
+
+.images a img {
+  height: 65%;
+}
+
+/* .images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row-wrap;
+  align-content: flex-end;
+} */
+/*
+.images a img {
+  height: 35%;
+  width: 35%;
+} */
