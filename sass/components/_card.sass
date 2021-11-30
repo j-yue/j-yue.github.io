@@ -1,0 +1,71 @@
+@use '../breakpoints' as *
+@use '../mixins' as mixins
+
+$padding: calc((var(--spacing))/2)
+
+.card
+  @include mixins.flex(column, nowrap, flex-start)
+  background: var(--color-fg)
+  color: var(--color-bg)
+  border-radius: var(--border-radius)
+  overflow: hidden //otherwise flex wont show curved border
+  filter: var(--drop-shadow)
+  margin-bottom: var(--spacing)
+  align-self: stretch
+
+  &__gallery
+    @include mixins.flex(row, wrap, space-between, center)
+
+  &__img
+  
+  &__title
+    text-align: center
+
+  &__details
+    padding: $padding
+
+  &__skills-list
+    @include mixins.flex(row, wrap)
+    font-size: 1rem
+    // offset padding from children to center container
+    margin-right: -1rem
+    margin-bottom: -1rem
+    
+
+  &__skills
+    flex: auto
+    color: var(--color-bg)
+    border: .1rem solid var(--color-bg)
+    padding: .5rem
+    text-align: center
+    border-radius: 2rem
+    // gutter
+    margin: 0 1rem 1rem 0
+
+
+  &__description
+
+
+
+  &__links
+    @include mixins.flex
+    
+
+  &__link
+    padding: .5rem
+    text-decoration: none
+    &::after
+      content: ''
+      width: 1.5rem
+      height: 1.5rem
+      display: inline-block
+      background-image: url('icons/icon-external.svg')
+
+  @media screen and (min-width: $large)
+    width: calc(50% - #{$padding})
+    
+
+
+
+
+

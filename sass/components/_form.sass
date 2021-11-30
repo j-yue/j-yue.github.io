@@ -1,0 +1,45 @@
+@use '../mixins' as *
+
+.form
+
+  &__label
+    font-family: var(--font-title)
+    line-height: 2
+
+  &__input
+    width: 100%
+    font-size: inherit
+    padding: calc(var(--spacing)*.5)
+    border-radius: var(--border-radius)
+    filter: var(--drop-shadow)
+    font-family: inherit
+
+  &__textarea
+    resize: none
+
+
+  &__wrapper
+    margin-bottom: var(--spacing)
+
+  &__submit
+
+
+  &__toast-wrapper
+    @include flex
+    position: fixed
+    bottom: -100vh
+    left: 0
+    width: 100%
+    opacity: 0
+    transition: var(--transition)
+    &--visible
+      bottom: 50%
+      opacity: 1
+
+  &__toast
+    background: var(--color-accent)
+    color: var(--color-bg)
+    padding: 1rem
+    border-radius: var(--border-radius)
+
+

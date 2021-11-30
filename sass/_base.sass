@@ -1,0 +1,59 @@
+@use 'breakpoints' as *
+// reset browser styles
+*, *::before, *::after
+  box-sizing: border-box
+  cursor: default
+
+body
+  margin: 0
+  min-width: 320px
+
+ul
+  padding: 0
+  margin: 0
+  list-style: none
+
+a
+  color: inherit
+  cursor: pointer
+
+
+// style html and body
+html
+  font-size: 16px
+  scroll-behavior: smooth
+  height: 100%
+
+  // responsive rem and font-sizes
+  @media screen and (min-width: $medium)
+    font-size: 18px
+
+  @media screen and (min-width: $large) 
+    font-size: 22px
+
+  @media screen and (min-width: $xlarge)
+    font-size: 1vw
+
+  @media screen and (min-width: $xxlarge)
+    font-size: 1.25vw
+
+
+
+body
+  background-color: var(--color-bg)
+  position: absolute
+  min-height: 100%
+  width: 100%
+
+  // prevent scrolling when menu expanded on mobile
+  &[unscrollable]
+    overflow: hidden
+
+
+
+body
+  @media screen and (min-width: $large) 
+    main
+      width: 75%
+      margin-left: 25%
+    

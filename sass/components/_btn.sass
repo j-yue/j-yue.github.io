@@ -1,0 +1,38 @@
+@mixin btn-types($bg, $fg)
+  background-color: $bg
+  color: $fg
+
+.btn
+  font-size: inherit
+  padding: 1rem
+  border-radius: var(--border-radius)
+  transition: var(--transition)
+  filter: var(--drop-shadow)
+  font-family: var(--font-body)
+  text-decoration: none
+  
+  &:hover
+    box-shadow: 0 0 1rem var(--color-fg)
+    cursor: pointer
+
+  &:active
+    transform: translateY(.1rem)
+
+  &--primary
+    @include btn-types(var(--color-fg), var(--color-bg))
+    
+  &--secondary
+    @include btn-types(var(--color-bg), var(--color-fg))
+
+  &--ghost
+    @include btn-types(var(--color-bg), var(--color-fg))
+    border: 0
+
+  &--submit
+    @include btn-types(var(--color-fg), var(--color-bg))
+    width: 100%
+    border: none
+    
+  &--fab
+    border-radius: 50%
+  

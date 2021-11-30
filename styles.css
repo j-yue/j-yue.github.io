@@ -1,0 +1,270 @@
+/* utility */
+.l-center {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-center-column {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* default is dark mode */
+/* :root {
+  --color-bg: #3d444b;
+  --color-fg: #ffcecc;
+  --color-accent: #bbcde0;
+  --color-menu: #eee;
+  --color-accent2: #a285a5;
+  --spacing: 3rem;
+  --transition: 0.4s;
+  --border-radius: 0.6rem;
+  --drop-shadow: drop-shadow(2px 4px 6px black);
+  --toggler-on: var(--color-fg);
+  --toggler-off: #888;
+  --toggler-slider: var(--color-bg);
+  --toggler-top: 0.75rem;
+  --toggler-left: 3.5rem;
+  --toggler-icon-url: url("icon-dark.svg");
+  --toggler-icon-left: 0.5rem;
+} */
+
+/* * {
+  box-sizing: border-box;
+} */
+/* 
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  color: var(--color-fg);
+  font-size: 1.5rem;
+  font-family: "Mulish", sans-serif;
+  line-height: 1.4;
+  margin: 0;
+} */
+
+/* light mode */
+/* body[light] {
+  --color-bg: #fff;
+  --color-fg: #000;
+  --color-accent: #888;
+  --color-menu: #000;
+  --toggler-on: #000;
+  --toggler-off: #888;
+  --toggler-slider: #fff;
+  --toggler-left: 1rem;
+  --toggler-icon-url: url("icon-light.svg");
+  --toggler-icon-left: 2.75rem;
+} */
+
+/* prevent scrolling when menu expanded on mobile */
+/* body[unscrollable] {
+  overflow: hidden;
+} */
+
+/* .visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+} */
+
+header {
+  padding: var(--spacing);
+  position: relative;
+}
+
+/* ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+} */
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat Alternates", sans-serif;
+} */
+
+/* h1::after,
+h2::after,
+h3::after,
+h4::after,
+h5::after,
+h6::after {
+} */
+
+/* h1 {
+  letter-spacing: 0.25rem;
+  font-size: 3rem;
+} */
+/* 
+.skipnav {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: -100vh;
+  transition: 0.3s;
+  padding: 1rem;
+}
+
+.skipnav:focus {
+  top: 0;
+  opacity: 1;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+} */
+
+/* 
+.btn {
+  font-size: inherit;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  font-family: "Mulish", sans-serif;
+  transition: var(--transition);
+  filter: var(--drop-shadow);
+}
+
+.btn:hover {
+  box-shadow: 0 0 1rem 1px var(--color-fg);
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: translateY(0.1rem);
+} */
+
+/*
+.btn--primary {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.btn--secondary {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+.btn--ghost {
+  background-color: var(--color-bg);
+  border: 0;
+}
+*/
+
+/* .btn--fab {
+  border-radius: 50%;
+  width: 4rem;
+  color: var(--color-fg);
+} */
+/* 
+main > article {
+  padding: var(--spacing);
+}
+
+main > article + article {
+  margin-top: var(--spacing);
+}
+
+main > article:nth-of-type(2n) {
+  background-color: var(--color-);
+}
+
+article > * + * {
+  margin-top: var(--spacing);
+} */
+
+/* .home__title {
+  font-weight: normal;
+}
+
+.home__bold {
+  font-weight: bold;
+} */
+
+/* .cta__panel {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+} */
+
+/* a.btn {
+  text-decoration: none;
+} */
+
+/* .skills__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.skills__list-item {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  padding: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  flex: 1;
+  margin: 0 1rem 1rem 0;
+  text-align: center;
+  filter: var(--drop-shadow);
+} */
+
+.skills__list-item + .skills__list-item {
+}
+
+@media screen and (min-width: 750px) {
+  .skills__list-item {
+  }
+}
+
+/* .fab-scroll {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+  width: 1rem;
+  height: 1rem;
+  font-size: 1.25rem;
+} */
+
+.img {
+}
+/* 
+.projects {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* width needs to be smaller on larger screens */
+.projects__card {
+  width: 100%;
+  display: flex;
+} */

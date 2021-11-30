@@ -1,0 +1,17 @@
+@use '../mixins' as *
+
+.home
+  &__title
+    font-weight: normal
+    text-align: center
+
+  &__bold
+    font-weight: bold
+
+  &__content
+    text-align: center
+
+  &__cta
+    @include flex(row, nowrap, space-evenly, center)
+    margin-top: var(--spacing)
+

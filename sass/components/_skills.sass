@@ -1,0 +1,20 @@
+@use '../mixins' as *
+
+.skills
+  @include flex(row, wrap)
+  font-weight: bold
+  // offset margin created by children to make it center
+  margin-right: -1rem
+  margin-bottom: -1rem
+
+
+  &__item
+    background-color: var(--color-fg)
+    color: var(--color-bg)
+    padding: 1rem
+    border-radius: 1rem
+    // gutters
+    margin: 0 1rem 1rem 0
+    @include flex(column)
+    flex: auto
+    text-align: center

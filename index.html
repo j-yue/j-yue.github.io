@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Jeanette Yue Portfolio</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;700&family=Mulish:wght@300;400;700&display=swap");
+    </style>
+    <script src="src/components.js"></script>
+    <script src="src/form.js" defer></script>
+  </head>
+
+  <body>
+    <section>
+      <a href="#main-content" class="skipnav">Skip to main content</a>
+    </section>
+
+    <header class="header">
+      <mobile-menu
+        class="menu"
+        data-links-separator=", "
+        data-links="home, about, projects, work, education, contact"
+      >
+      </mobile-menu>
+
+      <color-toggler class="color-toggler"></color-toggler>
+    </header>
+
+    <main id="main-content">
+      <button class="btn btn--ghost fab fab--scroll" is="fab-scroll"></button>
+
+      <article id="home" class="section home">
+        <h1 class="section__title home__title">
+          I'm Jeanette, a <strong class="home__bold">curious</strong> Front End
+          Developer
+        </h1>
+        <p class="home__content">
+          I create <strong class="home__bold">mobile-first</strong>,
+          <strong class="home__bold">responsive</strong>, and
+          <strong class="home__bold">semantic</strong> web apps
+        </p>
+        <section class="home__cta">
+          <a href="#projects" class="btn btn--primary">Projects</a>
+          <a href="#projects" class="btn btn--secondary">Resume</a>
+        </section>
+      </article>
+
+      <article id="about" class="section about">
+        <h2 class="section__title">About</h2>
+        <p>
+          I love building tools that people can use to be more productive. The
+          process of conceptualizing and researching the architecture of a web
+          app is a thrilling adventrure, especially if it involves learning new
+          skills.
+        </p>
+        <p>In my adventures, I've learned:</p>
+
+        <section class="about__skills">
+          <ul class="skills" aria-label="Skills">
+            <li class="skills__item">Semantic HTML</li>
+            <li class="skills__item">CSS/SASS/BEM</li>
+            <li class="skills__item">Accessibility</li>
+            <li class="skills__item">Javascript/es6</li>
+            <li class="skills__item">API Calls</li>
+            <li class="skills__item">Light Node.js</li>
+            <li class="skills__item">Liquid</li>
+            <li class="skills__item">Shopify Theme Development</li>
+            <li class="skills__item">Web Components</li>
+            <li class="skills__item">React</li>
+            <li class="skills__item">Light Material UI</li>
+            <li class="skills__item">Light Figma</li>
+            <li class="skills__item">Light UX</li>
+            <li class="skills__item">Git</li>
+          </ul>
+        </section>
+      </article>
+
+      <article id="projects" class="section projects">
+        <h2 class="section__title">Projects</h2>
+
+        <section class="projects card__gallery">
+          <section class="projects__card card">
+            <div class="card__img img__wrapper">
+              <img src="pic.jpeg" alt="" class="img" />
+            </div>
+
+            <div class="card__details">
+              <ul class="card__skills-list" aria-label="Skills used in project">
+                <li class="card__skills">React</li>
+                <li class="card__skills">React Hooks</li>
+                <li class="card__skills">Grommet</li>
+                <li class="card__skills">p5.js</li>
+                <li class="card__skills">Netlify</li>
+              </ul>
+
+              <h3 class="card__title">Halloween Photobooth App</h3>
+
+              <p class="card__description">
+                Web app that removes greenscreens and generates an image with
+                the result placed on the center of a collection of preselected
+                Halloween-themed backgrounds
+              </p>
+
+              <ul class="card__links" aria-label="External links">
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Code</a
+                  >
+                </li>
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Live</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="projects__card card">
+            <div class="card__img img__wrapper">
+              <img src="pic.jpeg" alt="" class="img" />
+            </div>
+
+            <div class="card__details">
+              <ul class="card__skills-list" aria-label="Skills used in project">
+                <li class="card__skills">React</li>
+                <li class="card__skills">React Hooks</li>
+                <li class="card__skills">React Beautiful DND</li>
+                <li class="card__skills">Polaris (Shopify)</li>
+                <li class="card__skills">Liquid</li>
+              </ul>
+
+              <h3 class="card__title">Dragquify</h3>
+
+              <p class="card__description">
+                A drag and drop code generator for schema tags in Shopify's
+                section architecture. Can also be used to prototype the output
+                in Shopify's theme editor and test merchant experience.
+              </p>
+
+              <p class="card__description">
+                I built this to learn Liquid and to understand theme sections I
+                mdae this to learn Liquid and to visualize how input settings
+                appear in the theme editor.
+              </p>
+
+              <ul class="card__links" aria-label="External links">
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Code</a
+                  >
+                </li>
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Live</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="projects__card card">
+            <div class="card__img img__wrapper">
+              <img src="pic.jpeg" alt="" class="img" />
+            </div>
+
+            <div class="card__details">
+              <ul class="card__skills-list" aria-label="Skills used in project">
+                <li class="card__skills">React</li>
+                <li class="card__skills">Rebass React</li>
+                <li class="card__skills">Color Thief</li>
+                <li class="card__skills">Unsplash API</li>
+                <li class="card__skills">Node.js</li>
+                <li class="card__skills">Express</li>
+                <li class="card__skills">Axios</li>
+                <li class="card__skills">Heroku</li>
+              </ul>
+
+              <h3 class="card__title">Mood Colors</h3>
+
+              <p class="card__description">
+                A palette generator with a twist - create palettes from moods.
+                Users can search suggested feelings or create palettes from
+                uploaded images.
+              </p>
+
+              <p class="card__description">
+                A palette comprises of the three most dominant colors generated
+                by Lokesh Dhakar's Color Thief.
+              </p>
+
+              <p class="card__description">
+                Per Unsplash's terms, I built a simple API with Express and
+                Axios to make get requests and to secure my API key.
+              </p>
+
+              <ul class="card__links" aria-label="External links">
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Code</a
+                  >
+                </li>
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Live</a
+                  >
+                </li>
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Backend</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="projects__card card">
+            <div class="card__img img__wrapper">
+              <img src="pic.jpeg" alt="" class="img" />
+            </div>
+
+            <div class="card__details">
+              <ul class="card__skills-list" aria-label="Skills used in project">
+                <li class="card__skills">Semantic HTML</li>
+                <li class="card__skills">Javascript</li>
+                <li class="card__skills">Web Components</li>
+                <li class="card__skills">SASS</li>
+              </ul>
+
+              <h3 class="card__title">Portfolio</h3>
+
+              <p class="card__description">
+                Mobile-first portfolio built with semantic elements. Features a
+                skipnav and dark theme toggler for accessibility, plus a scroll
+                to top button for mobile users. Follows BEM naming conventions
+                for styling.
+              </p>
+
+              <ul class="card__links" aria-label="External links">
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Code</a
+                  >
+                </li>
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Live</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="projects__card card">
+            <div class="card__img img__wrapper">
+              <img src="pic.jpeg" alt="" class="img" />
+            </div>
+
+            <div class="card__details">
+              <ul class="card__skills-list" aria-label="Skills used in project">
+                <li class="card__skills">React</li>
+                <li class="card__skills">React Context</li>
+                <li class="card__skills">React Router</li>
+                <li class="card__skills">Material UI</li>
+                <li class="card__skills">Progressive Web App</li>
+                <li class="card__skills">Netlify</li>
+              </ul>
+
+              <h3 class="card__title">Baking Buddy</h3>
+
+              <p class="card__description">
+                A pocketbook of baking substitutes in the form of an interactive
+                app.
+              </p>
+
+              <ul class="card__links" aria-label="External links">
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Code</a
+                  >
+                </li>
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Live</a
+                  >
+                </li>
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Backend</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="projects__card card">
+            <div class="card__img img__wrapper">
+              <img src="pic.jpeg" alt="" class="img" />
+            </div>
+
+            <div class="card__details">
+              <ul class="card__skills-list" aria-label="Skills used in project">
+                <li class="card__skills">UX</li>
+                <li class="card__skills">Wireframing</li>
+                <li class="card__skills">Balsamiq</li>
+                <li class="card__skills">Personas</li>
+                <li class="card__skills">Storyboarding</li>
+                <li class="card__skills">Task Analysis</li>
+                <li class="card__skills">User Testing</li>
+                <li class="card__skills">jQuery Mobile</li>
+              </ul>
+
+              <h3 class="card__title">Battle of the Plates</h3>
+
+              <p class="card__description">
+                Team project. Through interviewing students, we discovered that
+                most students did not have balanced diets and built profiles of
+                potential users. Our tentative solution was to design a meal
+                tracking app. The main interface was an interactive plate based
+                on food groups. After numerous iterations of testing different
+                prototypes, the final protoype incorporated gamified elements.
+              </p>
+
+              <ul class="card__links" aria-label="External links">
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Project Site</a
+                  >
+                </li>
+                <li class="card__list-item">
+                  <a href="" target="_blank" class="card__link" rel="noreferrer"
+                    >Prototype</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+      </article>
+
+      <article class="section work" id="work">
+        <h2 class="section__title">Work</h2>
+      </article>
+
+      <article class="section education" id="education">
+        <h2 class="section__title">Education</h2>
+      </article>
+
+      <article class="section contact" id="contact">
+        <h2 class="section__title">Contact</h2>
+
+        <form class="contact__form">
+          <div class="form__wrapper">
+            <label for="email" class="form__label">Email</label>
+            <input
+              class="form__input form__email"
+              type="email"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form__wrapper">
+            <label for="message" class="form__label">Message</label>
+            <textarea
+              class="form__input form__textarea"
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+              required
+            ></textarea>
+          </div>
+
+          <button class="btn btn--submit form__submit" type="submit">
+            Send
+          </button>
+
+          <div class="form__toast-wrapper">
+            <span class="form__toast">Message sent</span>
+          </div>
+        </form>
+      </article>
+    </main>
+  </body>
+</html>

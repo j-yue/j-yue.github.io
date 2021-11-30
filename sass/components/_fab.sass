@@ -1,0 +1,17 @@
+@use '../mixins' as *
+
+.fab 
+  border-radius: 50%
+  @include flex()
+
+  &--scroll
+    position: fixed
+    bottom: 1rem
+    right: 1rem
+    z-index: 10
+    width: 1rem
+    height: 1rem
+    font-size: 1.25rem
+
+    @media screen and (min-width: 1025px)
+      display: none

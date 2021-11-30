@@ -1,0 +1,42 @@
+// custom properties
+:root
+  --color-bg: #3d444b
+  --color-fg: #ffcecc
+  --color-accent: #bbcde0
+  --color-menu: #eee
+  --color-accent2: #a285a5
+  --spacing: 2rem
+  --transition: 0.4s
+  --border-radius: 0.6rem
+  --drop-shadow: drop-shadow(2px 4px 6px black)
+
+  // color toggler specific variables
+  --toggler-on: var(--color-fg)
+  --toggler-off: #888
+  --toggler-slider: var(--color-bg)
+  --toggler-top: 0.75rem
+  --toggler-left: 3.5rem
+  --toggler-icon-url: url("icons/icon-dark.svg")
+  --toggler-icon-left: 0.5rem
+
+  //fonts
+  --font-body: 'Mulish', sans-serif
+  --font-title: "Montserrat Alternates", sans-serif
+
+
+// handle color changes made from color toggler
+// light mode
+body[light] 
+  --color-bg: #fff
+  --color-fg: #000
+  --color-accent: #888
+  --color-menu: #000
+  --toggler-on: #000
+  --toggler-off: #888
+  --toggler-slider: #fff
+  --toggler-left: 1rem
+  --toggler-icon-url: url("icons/icon-light.svg")
+  --toggler-icon-left: 2.75rem
+
+
+

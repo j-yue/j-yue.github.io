@@ -1,0 +1,74 @@
+@use '../mixins' as *
+
+.menu
+
+  &__expand
+    width: 3rem
+    height: 3rem
+    @include flex(column, nowrap, space-evenly, center)
+    background: var(--color-bg)
+
+  &__hamburger
+    width: 100%
+    height: .25rem
+    border-radius: .25rem
+    background-color: var(--color-fg)
+    &:hover
+      cursor: pointer
+
+  &__list
+    margin: 0
+    padding: var(--spacing)
+    list-style: none
+    background: var(--color-menu)
+    position: fixed
+    top: 0
+    width: 100%
+    height: 100vh
+    z-index: 100
+    @include flex(column, nowrap, space-evenly, center)
+    box-sizing: border-box
+    left: -100vw
+    transition: var(--transition)
+
+
+  &__nav--expanded .menu__list 
+    left: 0
+
+
+  &__link
+    color: var(--color-bg)
+    text-decoration: none
+    text-transform: capitalize
+    font-size: 2rem
+    &:local-link
+      font-weight: bold
+
+  &__list-item
+    position: relative
+    @include flex(column, nowrap, center, center)
+    transition: var(--transition)
+    &::after
+      content: ''
+      display: block
+      width: 0
+      height: 3px
+      opacity: 0
+      position: relative
+      z-index: -1
+      background-color: var(--color-bg)
+      transition: var(--transition)
+    &:hover::after
+      width: 130%
+      opacity: 1
+
+  @media screen and (min-width: 1025px)
+    &__expand
+      display: none
+
+    &__list
+      left: 0
+      width: 25% 
+      filter: var(--drop-shadow)
+      
+    
