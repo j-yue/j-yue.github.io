@@ -89,13 +89,6 @@ body[unscrollable] {
   overflow: hidden;
 }
 
-@media screen and (min-width: 1025px) {
-  body main {
-    width: 75%;
-    margin-left: 25%;
-  }
-}
-
 body {
   color: var(--color-fg);
   font-size: 1.5rem;
@@ -364,16 +357,6 @@ h1 {
 .menu__list-item:hover::after {
   width: 130%;
   opacity: 1;
-}
-@media screen and (min-width: 1025px) {
-  .menu__expand {
-    display: none;
-  }
-  .menu__list {
-    left: 0;
-    width: 25%;
-    filter: var(--drop-shadow);
-  }
 }
 
 .card {
