@@ -286,6 +286,7 @@ h1 {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .menu__expand {
