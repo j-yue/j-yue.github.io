@@ -1,4 +1,5 @@
 @use '../mixins' as *
+@use '../breakpoints' as breakpoints
 
 .home
   &__title
@@ -7,6 +8,16 @@
 
   &__bold
     font-weight: bold
+
+  &__intro
+
+    @media screen and (min-width: breakpoints.$medium)
+      width: 75%
+      margin: auto
+
+    @media screen and (min-width: breakpoints.$xlarge)
+      width: 50%
+
 
   &__content
     text-align: center

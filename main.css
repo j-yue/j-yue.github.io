@@ -250,6 +250,17 @@ h1 {
 .home__bold {
   font-weight: bold;
 }
+@media screen and (min-width: 769px) {
+  .home__intro {
+    width: 75%;
+    margin: auto;
+  }
+}
+@media screen and (min-width: 1201px) {
+  .home__intro {
+    width: 50%;
+  }
+}
 .home__content {
   text-align: center;
 }
