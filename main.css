@@ -189,11 +189,32 @@ h1 {
   color: var(--color-fg);
   border: 0;
 }
+.btn--close {
+  padding: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--color-menu);
+  color: var(--color-bg);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: var(--spacing);
+  right: var(--spacing);
+  border: 0;
+  filter: none;
+}
+.btn--close:hover {
+  background: var(--color-bg);
+  color: var(--color-menu);
+}
 .btn--submit {
   background-color: var(--color-fg);
   color: var(--color-bg);
   width: 100%;
-  border: none;
 }
 .btn--fab {
   border-radius: 50%;

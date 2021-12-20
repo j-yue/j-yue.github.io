@@ -266,7 +266,7 @@ class MobileMenu extends HTMLElement {
     const links = this.getLinks(this.dataset.linksSeparator);
     const list = document.createElement("ul");
     list.classList.add("menu__list");
-    let listInnerHTML = "";
+    let listInnerHTML = `<li class="menu__close-wrapper"><button class="btn btn--close">X</button></li>`;
 
     links.map((link) => {
       listInnerHTML += `
