@@ -222,25 +222,29 @@ h1 {
 
 .fab {
   border-radius: 50%;
+  transition: var(--transition);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
 }
-.fab--scroll {
+.fab__scroll {
   position: fixed;
-  bottom: 1rem;
   right: 1rem;
   z-index: 10;
   width: 1rem;
   height: 1rem;
   font-size: 1.25rem;
+  opacity: 0;
 }
-@media screen and (min-width: 1025px) {
-  .fab--scroll {
-    display: none;
-  }
+.fab__scroll--visible {
+  bottom: 2rem;
+  opacity: 1;
+}
+.fab__scroll--hidden {
+  bottom: -5rem;
+  opacity: 0;
 }
 
 .home__title {
@@ -468,10 +472,7 @@ h1 {
 
 .header {
   padding: var(--spacing);
-  position: fixed;
   width: 100%;
-  z-index: 1;
-  background: var(--color-bg);
 }
 
 .form__label {

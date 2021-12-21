@@ -2,16 +2,21 @@
 
 .fab 
   border-radius: 50%
+  transition: var(--transition)
   @include flex()
 
-  &--scroll
+  &__scroll
     position: fixed
-    bottom: 1rem
     right: 1rem
     z-index: 10
     width: 1rem
     height: 1rem
     font-size: 1.25rem
+    opacity: 0
+    &--visible
+      bottom: 2rem
+      opacity: 1
 
-    @media screen and (min-width: 1025px)
-      display: none
+    &--hidden
+      bottom: -5rem
+      opacity: 0
