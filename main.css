@@ -32,6 +32,24 @@ body[light] {
   --toggler-icon-left: 2.75rem;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    top: 2rem;
+  }
+  30% {
+    top: 0;
+    opacity: 0.1;
+  }
+  60% {
+    top: 0;
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
 *, *::before, *::after {
   box-sizing: border-box;
   cursor: default;
@@ -39,7 +57,10 @@ body[light] {
 
 body {
   margin: 0;
+  position: absolute;
   min-width: 320px;
+  opacity: 0;
+  animation: 1s fadeIn 0.5s ease-out forwards;
 }
 
 main {

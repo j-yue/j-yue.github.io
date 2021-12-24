@@ -1,4 +1,21 @@
 @use 'breakpoints' as *
+
+@keyframes fadeIn
+  from 
+    opacity: 0
+    top: 2rem
+  30%
+    top: 0
+    opacity: .1
+    
+  60%
+    top: 0
+    opacity: .5
+  to
+    opacity: 1
+    top: 0
+
+
 // reset browser styles
 *, *::before, *::after
   box-sizing: border-box
@@ -6,7 +23,10 @@
 
 body
   margin: 0
+  position: absolute
   min-width: 320px
+  opacity: 0
+  animation: 1s fadeIn .5s ease-out forwards
 
 main
   margin-top: 3rem
