@@ -32,4 +32,9 @@
       ? toggleSwapClasses(scroll, visible, hidden)
       : toggleSwapClasses(scroll, hidden, visible);
   }
+
+  const fab = document.querySelector(".fab__scroll");
+  fab.addEventListener("click", () =>
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  );
 })();

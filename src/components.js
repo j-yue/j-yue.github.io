@@ -114,6 +114,7 @@ class ColorToggler extends HTMLElement {
 
 customElements.define("color-toggler", ColorToggler);
 
+//customized built-in elements unsupported on safari
 // floating action button - visible on mobile devices to scroll to top
 class FabScroll extends HTMLButtonElement {
   constructor() {
