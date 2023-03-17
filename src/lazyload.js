@@ -4,7 +4,6 @@
   [...imgList].map((img) => {
     const gif = img.querySelector("img");
     const gifSrc = gif.getAttribute("data-portfolio-src");
-    console.log(img);
     const OPTIONS = {
       root: null,
       rootMargin: "0px",
